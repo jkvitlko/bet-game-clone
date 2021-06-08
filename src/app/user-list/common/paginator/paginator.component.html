@@ -1,0 +1,14 @@
+<ul *ngIf="pager.pages.length > 1" class="pagination noselect">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(pager.currentPage - 1)">&lt;</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.currentPage + 1)">&gt;</a>
+    </li>
+  </ul>
+  <div>
+    <ng-content></ng-content>
+  </div>

@@ -1,0 +1,84 @@
+<div class="main-container">
+    <div class="row">
+        <div class="col-md-3 left-section pt-5">
+            <h4>Playing 9</h4>
+            <ng-container *ngFor="let selectedPlayer of selectedPlayers">
+                <div class="selected-player">
+                    <div class="pr-4">
+                        <img class="selected-player-img" src={{selectedPlayer.ProfileImage}}
+                            alt={{selectedPlayer.Name}} />
+                    </div>
+                    <div>
+                        <div>
+                            {{selectedPlayer.Name}}
+                        </div>
+                        <div>
+                            <span class="pr-2"><img class="image" src="../../assets/images/trophy.png"
+                                    alt="">{{selectedPlayer.Wins}}</span>
+                            <span><img class="image" src="../../assets/images/medal.png"
+                                    alt="">{{selectedPlayer.Bet}}</span>
+                        </div>
+                    </div>
+                    <div class="mt-3"><img class="image" src="../../assets/images/money.png"
+                            alt="">{{selectedPlayer.Price}} </div>
+                </div>
+            </ng-container>
+            <div class="bottom-div" *ngIf="selectedPlayers.length == 9">
+                <button type="button" class="btn btn-primary" (click)="startGame()">START</button>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h1>Select Playing 9</h1>
+            <div class="main">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" placeholder="Search Players" #input>
+                </div>
+            </div>
+            <div class="user">
+                <ng-container>
+                    <table class="table">
+                        <thead>
+                            <tr class="table-header">
+                                <th scope="col">SELECT</th>
+                                <th scope="col">PLAYER NAME</th>
+                                <th scope="col">LEVEL</th>
+                                <th scope="col">AVATAR</th>
+                                <th scope="col">BET</th>
+                                <th scope="col">WINS</th>
+                                <th scope="col">LOST</th>
+                                <th scope="col">PRICE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let player of players">
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"
+                                            (change)="selectedPlayerEvent($event, player)">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                        </label>
+                                    </div>
+                                </th>
+                                <td>{{player.Name}}</td>
+                                <td>{{player.Level}}</td>
+                                <td>
+                                    <img class="img" src={{player.ProfileImage}} alt={{player.Name}} />
+                                </td>
+                                <td>{{player.Bet}}</td>
+                                <td>{{player.Wins}} </td>
+                                <td>Otto</td>
+                                <td>{{player.Price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-container>
+                <div class="pagination">
+                    <app-paginator [allResults]="allPlayers" [pageSize]="10" (currentResults)="currentResults($event)">
+                        pagination
+                    </app-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

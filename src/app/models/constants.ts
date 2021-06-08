@@ -1,0 +1,2 @@
+export const  WINNING= 'winning';
+
